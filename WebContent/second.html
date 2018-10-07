@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>Booking - Index - Find a Desk</title>
+<link href="/second.css" rel="stylesheet" type="text/css">
+<script src="/second.js"></script>
+	<script>
+		function booking() {
+			var date = document.getElementById("arrive").value;
+			var from = document.getElementById("from").value;
+			var to = document.getElementById("to").value;
+			var noOfPeopleCanSit = document.getElementById("noOfPeopleCanSit").value;
+	
+			var ItemJSON;
+			ItemJSON = '[{"date": ' + date + ', "from": ' + from + ', "to": ' + to
+					+ ', "noOfPeopleCanSit": ' + noOfPeopleCanSit + '  }]';
+			URL = "http://localhost:8082/students/Student1/courses";
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("response").innerHTML = this.responseText;
+                }
+            };
+			xmlhttp.open("GET", URL, true);
+			//xmlhttp.setRequestHeader("Content-Type", "application/json");
+			xmlhttp.send();
+			//alert(xmlhttp.responseText);
+			//document.getElementById("div").innerHTML = xmlhttp.statusText + ":"
+				//	+ xmlhttp.status + "<BR><textarea rows='100' cols='100'>"
+					+ xmlhttp.responseText + "</textarea>";
+	
+		}
+	</script>
+	</link>
+	</meta>
+</head>
+
+<form action="">
+	<!--  General -->
+	<div class="form-group">
+		<h4>Booing - Index - Find a Desk</h4>
+		<h2 class="heading">Find a Room</h2>
+		<!--  Details -->
+		<div class="form-group">
+			<h5 class="heading">Booking on</h5>
+			<div class="grid">
+				<div class="col-1-4 col-1-4-sm">
+					<div class="controls">
+						<input type="date" id="arrive" class="floatLabel" name="arrive"> <label for="arrive"
+							class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;from</label>
+						<!-- <timer drop down> -->
+						<select class="floatLabel" id="from">
+							<option value="1">12:00 AM</option>
+							<option value="2">01:00 AM</option>
+							<option value="3">02:00 AM</option>
+							<option value="4">03:00 AM</option>
+							<option value="5">04:00 AM</option>
+							<option value="6">05:00 AM</option>
+							<option value="7">06:00 AM</option>
+							<option value="8">07:00 AM</option>
+							<option value="9">08:00 AM</option>
+							<option value="10">09:00 AM</option>
+							<option value="11">10:00 AM</option>
+							<option value="12">11:00 AM</option>
+							<option value="13">12:00 PM</option>
+							<option value="14">01:00 PM</option>
+							<option value="15">02:00 PM</option>
+							<option value="16">03:00 PM</option>
+							<option value="17">04:00 PM</option>
+							<option value="18" selected>04:30 PM</option>
+							<option value="19">05:00 PM</option>
+							<option value="20">06:00 PM</option>
+							<option value="21">07:00 PM</option>
+							<option value="22">08:00 PM</option>
+							<option value="23">09:00 PM</option>
+							<option value="24">10:00 PM</option>
+							<option value="25">11:00 PM</option>
+							<option value="26">12:00 PM</option>
+						</select> <label for="arrive" class="label-date"><i
+							class="fa fa-calendar"></i>&nbsp;&nbsp;to</label>
+						<!-- <timer drop down> -->
+						<select class="floatLabel" id="to">
+							<option value="1">12:00 AM</option>
+							<option value="2">01:00 AM</option>
+							<option value="3">02:00 AM</option>
+							<option value="4">03:00 AM</option>
+							<option value="5">04:00 AM</option>
+							<option value="6">05:00 AM</option>
+							<option value="7">06:00 AM</option>
+							<option value="8">07:00 AM</option>
+							<option value="9">08:00 AM</option>
+							<option value="10">09:00 AM</option>
+							<option value="11">10:00 AM</option>
+							<option value="12">11:00 AM</option>
+							<option value="13">12:00 PM</option>
+							<option value="14">01:00 PM</option>
+							<option value="15">02:00 PM</option>
+							<option value="16">03:00 PM</option>
+							<option value="17">04:00 PM</option>
+							<option value="18" selected>04:45 PM</option>
+							<option value="19">05:00 PM</option>
+							<option value="20">06:00 PM</option>
+							<option value="21">07:00 PM</option>
+							<option value="22">08:00 PM</option>
+							<option value="23">09:00 PM</option>
+							<option value="24">10:00 PM</option>
+							<option value="25">11:00 PM</option>
+							<option value="26">12:00 PM</option>
+						</select> <label for="arrive" class="label-date"><i
+							class="fa fa-calendar"></i>&nbsp;&nbsp;that can sit</label>
+						<!-- <timer drop down> -->
+						<i class="fa fa-sort"></i> <select class="floatLabel"
+							id="noOfPeopleCanSit">
+							<option value="blank"></option>
+							<option value="1">1</option>
+							<option value="2" selected>2</option>
+							<option value="3">3</option>
+						</select> <label for="fruit"><i class="fa fa-male"></i>&nbsp;&nbsp;People</label>
+					</div>
+				</div>
+			</div>
+			<br> <br>
+
+			<div class="grid">
+				<label for="fruit"><i class="fa fa-male"></i>&nbsp;&nbsp;Room
+					Amentities</label>
+				<div class="controls">
+					<textarea name="comments" class="floatLabel" id="comments"></textarea>
+				</div>
+			</div>
+			<br>
+			<div class="grid">
+				<label for="fruit"><i class="fa fa-male"></i>&nbsp;&nbsp;Location</label>
+				<div class="controls">
+					<textarea name="comments" class="floatLabel" id="comments"></textarea>
+				</div>
+				<br> <br>
+				<button type="submit" value="Submit" class="col-1-4"
+					onclick="booking()">Submit</button>
+			</div>
+		</div>
+		<!-- /.form-group -->
+</form>
+</html>

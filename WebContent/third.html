@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>Booing - Index - Find a Desk</title>
+<link href="/second.css" rel="stylesheet" type="text/css">
+<script src="datetimepicker_css.js"></script>
+<script src="/second.js"></script>
+</head>
+
+<form action="">
+	<!--  General -->
+	<div class="form-group">
+	<h4>Booing - Index - Find a Desk</h4>
+		<h2 class="heading">Find a Room</h2>
+	<!--  Details -->
+	<div class="form-group">
+		<h2 class="heading">Booking on</h2>
+		<div class="grid">
+			<div class="col-1-4 col-1-4-sm">
+				<div class="controls">
+					 <div style="text-align:center; margin:150px auto 100px auto;">
+        				<!-- <label for="demo1">Please enter a date here &gt;&gt; </label> -->
+        				<input type="Text" id="demo1" maxlength="25" size="25"/>
+        				<img src="images2/cal.gif" onclick="javascript:NewCssCal ('demo1','MMddyyyy','dropdown',true,'12')"/>
+    				</div>
+				<label for="arrive"
+						class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;that can sit</label>
+					<!-- <timer drop down> -->
+				<i class="fa fa-sort"></i> <select class="floatLabel">
+						<option value="blank"></option>
+						<option value="1">1</option>
+						<option value="2" selected>2</option>
+						<option value="3">3</option>
+					</select> <label for="fruit"><i class="fa fa-male"></i>&nbsp;&nbsp;People</label>
+				</div>
+			</div>
+		</div>
+					<br>
+					<br>
+		
+		<div class="grid">
+			<label for="fruit"><i class="fa fa-male"></i>&nbsp;&nbsp;Room Amentities</label>
+			<div class="controls">
+				<textarea name="comments" class="floatLabel" id="comments"></textarea>
+			</div>
+		</div>
+		<br>
+		<div class="grid">
+			<label for="fruit"><i class="fa fa-male"></i>&nbsp;&nbsp;Location</label>
+			<div class="controls">
+				<textarea name="comments" class="floatLabel" id="comments"></textarea>
+			</div>
+			<br>
+			<br>
+			<button type="submit" value="Submit" class="col-1-4">Submit</button>
+		</div>
+	</div>
+	<!-- /.form-group -->
+</form>
+</html>
