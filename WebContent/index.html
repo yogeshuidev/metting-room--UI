@@ -16,7 +16,7 @@
 			var ItemJSON;
 			ItemJSON = '[{"date": ' + date + ', "from": ' + from + ', "to": ' + to
 					+ ', "noOfPeopleCanSit": ' + noOfPeopleCanSit + '  }]';
-			URL = "http://localhost:8082/students/Student1/courses";
+			URL = 'http://localhost:8082/getRoomBookingInfoByDateFromToPersons/'+date+'/'+from+'/'+to+'/'+noOfPeopleCanSit;
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {

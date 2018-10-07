@@ -1,103 +1,146 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <title> Hotel Reservation Form </title>
-
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="custom.css" rel="stylesheet" type="text/css">
-
-    <script>
-        function finalCost(){
-            var roomType = document.getElementById("room_type").value;
-            var roomNum = document.getElementById("room_number").value;
-            var personNum = document.getElementById("person_number").value;
-            var childNum = document.getElementById("child_number").value;
-            var resFacilities = document.getElementById("res_facilities").value;
-
-            var total = (parseInt(roomType)*10) + ((roomNum)*2) + ((personNum)*3) + ((childNum)*2) + ((resFacilities)*5)
-
-            document.getElementById("result").innerHTML = total;
-        }
-    </script>
-
-
+<meta charset="UTF-8">
+<title>Booking - Index - Find a Desk</title>
+<link href="/second.css" rel="stylesheet" type="text/css">
+<script src="/second.js"></script>
+	<script>
+		function booking() {
+			var date = document.getElementById("arrive").value;
+			var from = document.getElementById("from").value;
+			var to = document.getElementById("to").value;
+			var noOfPeopleCanSit = document.getElementById("noOfPeopleCanSit").value;
+	
+			var ItemJSON;
+			ItemJSON = '[{"date": ' + date + ', "from": ' + from + ', "to": ' + to
+					+ ', "noOfPeopleCanSit": ' + noOfPeopleCanSit + '  }]';
+			URL = 'http://localhost:8080/getRoomBookingInfoByDateFromToPersons/'+date+'/'+from+'/'+to+'/'+noOfPeopleCanSit;
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("response").innerHTML = this.responseText;
+                }
+            };
+			xmlhttp.open("GET", URL, true);
+			//xmlhttp.setRequestHeader("Content-Type", "application/json");
+			xmlhttp.send();
+			//alert(xmlhttp.responseText);
+			//document.getElementById("div").innerHTML = xmlhttp.statusText + ":"
+				//	+ xmlhttp.status + "<BR><textarea rows='100' cols='100'>"
+					+ xmlhttp.responseText + "</textarea>";
+	
+		}
+	</script>
+	</link>
+	</meta>
 </head>
-<body>
-     <div class="hotel_reserve_box">
-         <h3> Hotel Reservation Form </h3><br>
-         <form>
-             <div class="form-group">
-                 <label>Room/Suite Type</label>
-                 <select class="form-control" id="room_type" onchange="finalCost()">
-                     <option value="0" selected>Select Room/Suite </option>
-                     <option value="1"> Standard </option>
-                     <option value="2"> Deluxe </option>
-                     <option value="3"> Superior Deluxe </option>
-                     <option value="4"> Premier Deluxe  </option>
-                     <option value="5"> Executive Suite </option>
-                     <option value="6"> Junior Suite </option>
-                     <option value="7"> Honeymoon Suite </option>
-                 </select>
-             </div>
-             <div class="form-group">
-                 <label>Number of room/suite</label>
-                 <select class="form-control" id="room_number" onchange="finalCost()">
-                     <option value="0"> 0 </option>
-                     <option value="1"> 1 </option>
-                     <option value="2"> 2 </option>
-                     <option value="3"> 3 </option>
-                     <option value="4"> 4 </option>
-                     <option value="5"> 5 </option>
-                     <option value="6"> 6 </option>
-                     <option value="7"> 7 </option>
-                 </select>
-             </div>
-             <div class="form-group">
-                 <label>Number of persons</label>
-                 <select class="form-control" id="person_number" onchange="finalCost()">
-                     <option value="0"> 0 </option>
-                     <option value="1"> 1 </option>
-                     <option value="2"> 2 </option>
-                     <option value="3"> 3 </option>
-                     <option value="4"> 4 </option>
-                     <option value="5"> 5 </option>
-                     <option value="6"> 6 </option>
-                     <option value="7"> 7 </option>
-                 </select>
-             </div>
-             <div class="form-group">
-                 <label>Number of children</label>
-                 <select class="form-control" id="child_number" onchange="finalCost()">
-                     <option value="0"> 0 </option>
-                     <option value="1"> 1 </option>
-                     <option value="2"> 2 </option>
-                     <option value="3"> 3 </option>
-                     <option value="4"> 4 </option>
-                     <option value="5"> 5 </option>
-                     <option value="6"> 6 </option>
-                     <option value="7"> 7 </option>
-                 </select>
-             </div>
-             <div class="form-group">
-                 <label>Restaurant facilities?</label>
-                 <select class="form-control" id="res_facilities" onchange="finalCost()">
-                     <option value="0" selected> Do you want restaurant facilities? </option>
-                     <option value="2"> Yes </option>
-                     <option value="0"> No </option>
-                 </select>
-             </div><br>
-             <div class="form-group">
-                 <label>Total Cost ($) : </label>
-                 <span id="result" style="background-color: #7527b0;color: #fff;padding: 6px 70px;font-weight: 600;font-size: 18px; margin-left: 10px;border-radius: 5px;">0</span>
-             </div>
-         </form>
-     </div>
 
-</body>
+<form action="">
+	<!--  General -->
+	<div class="form-group">
+		<h4>Booing - Index - Find a Desk</h4>
+		<h2 class="heading">Find a Room</h2>
+		<!--  Details -->
+		<div class="form-group">
+			<h5 class="heading">Booking on</h5>
+			<div class="grid">
+				<div class="col-1-4 col-1-4-sm">
+					<div class="controls">
+						<input type="date" id="arrive" class="floatLabel" name="arrive"> <label for="arrive"
+							class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;from</label>
+						<!-- <timer drop down> -->
+						<select class="floatLabel" id="from">
+							<option value="1">12:00 AM</option>
+							<option value="2">01:00 AM</option>
+							<option value="3">02:00 AM</option>
+							<option value="4">03:00 AM</option>
+							<option value="5">04:00 AM</option>
+							<option value="6">05:00 AM</option>
+							<option value="7">06:00 AM</option>
+							<option value="8">07:00 AM</option>
+							<option value="9">08:00 AM</option>
+							<option value="10">09:00 AM</option>
+							<option value="11">10:00 AM</option>
+							<option value="12">11:00 AM</option>
+							<option value="13">12:00 PM</option>
+							<option value="14">01:00 PM</option>
+							<option value="15">02:00 PM</option>
+							<option value="16">03:00 PM</option>
+							<option value="17">04:00 PM</option>
+							<option value="18" selected>04:30 PM</option>
+							<option value="19">05:00 PM</option>
+							<option value="20">06:00 PM</option>
+							<option value="21">07:00 PM</option>
+							<option value="22">08:00 PM</option>
+							<option value="23">09:00 PM</option>
+							<option value="24">10:00 PM</option>
+							<option value="25">11:00 PM</option>
+							<option value="26">12:00 PM</option>
+						</select> <label for="arrive" class="label-date"><i
+							class="fa fa-calendar"></i>&nbsp;&nbsp;to</label>
+						<!-- <timer drop down> -->
+						<select class="floatLabel" id="to">
+							<option value="1">12:00 AM</option>
+							<option value="2">01:00 AM</option>
+							<option value="3">02:00 AM</option>
+							<option value="4">03:00 AM</option>
+							<option value="5">04:00 AM</option>
+							<option value="6">05:00 AM</option>
+							<option value="7">06:00 AM</option>
+							<option value="8">07:00 AM</option>
+							<option value="9">08:00 AM</option>
+							<option value="10">09:00 AM</option>
+							<option value="11">10:00 AM</option>
+							<option value="12">11:00 AM</option>
+							<option value="13">12:00 PM</option>
+							<option value="14">01:00 PM</option>
+							<option value="15">02:00 PM</option>
+							<option value="16">03:00 PM</option>
+							<option value="17">04:00 PM</option>
+							<option value="18" selected>04:45 PM</option>
+							<option value="19">05:00 PM</option>
+							<option value="20">06:00 PM</option>
+							<option value="21">07:00 PM</option>
+							<option value="22">08:00 PM</option>
+							<option value="23">09:00 PM</option>
+							<option value="24">10:00 PM</option>
+							<option value="25">11:00 PM</option>
+							<option value="26">12:00 PM</option>
+						</select> <label for="arrive" class="label-date"><i
+							class="fa fa-calendar"></i>&nbsp;&nbsp;that can sit</label>
+						<!-- <timer drop down> -->
+						<i class="fa fa-sort"></i> <select class="floatLabel"
+							id="noOfPeopleCanSit">
+							<option value="blank"></option>
+							<option value="1">1</option>
+							<option value="2" selected>2</option>
+							<option value="3">3</option>
+						</select> <label for="fruit"><i class="fa fa-male"></i>&nbsp;&nbsp;People</label>
+					</div>
+				</div>
+			</div>
+			<br> <br>
+
+			<div class="grid">
+				<label for="fruit"><i class="fa fa-male"></i>&nbsp;&nbsp;Room
+					Amentities</label>
+				<div class="controls">
+					<textarea name="comments" class="floatLabel" id="comments"></textarea>
+				</div>
+			</div>
+			<br>
+			<div class="grid">
+				<label for="fruit"><i class="fa fa-male"></i>&nbsp;&nbsp;Location</label>
+				<div class="controls">
+					<textarea name="comments" class="floatLabel" id="comments"></textarea>
+				</div>
+				<br> <br>
+				<button type="submit" value="Submit" class="col-1-4"
+					onclick="booking()">Submit</button>
+			</div>
+		</div>
+		<!-- /.form-group -->
+</form>
 </html>
